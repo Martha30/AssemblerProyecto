@@ -108,12 +108,12 @@ opcion: .word 0
 cont: .word  
 
 salida:         .asciz "Gracias por jugar\n"
-presentacion: . asciz "  _____     _____              ______       ____      ______      ____  \n"
-presentacion: . asciz " (  __ \   (_   _)            (_  __ \     / __ \   (___  ___)  / ____\ \n"
-presentacion: . asciz "  ) )_) )    | |    ________    ) ) \ \   / /  \ \      ) )    ( (___   \n"
-presentacion: . asciz " (  ___/     | |   (________)  ( (   ) ) ( ()  () )    ( (      \___ \  \n"
-presentacion: . asciz "  ) )        | |                ) )  ) ) ( ()  () )     ) )         ) ) \n"
-presentacion: . asciz " ( (        _| |__             / /__/ /   \ \__/ /     ( (      ___/ /  \n"
-presentacion: . asciz " /__\      /_____(            (______/     \____/      /__\    /____/   \n"
+presentacion : . asciz "  _____     _____              ______       ____      ______      ____  \n"
+presentacion1: . asciz " (  __ \   (_   _)            (_  __ \     / __ \   (___  ___)  / ____\ \n"
+presentacion2: . asciz "  ) )_) )    | |    ________    ) ) \ \   / /  \ \      ) )    ( (___   \n"
+presentacion3: . asciz " (  ___/     | |   (________)  ( (   ) ) ( ()  () )    ( (      \___ \  \n"
+presentacion4: . asciz "  ) )        | |                ) )  ) ) ( ()  () )     ) )         ) ) \n"
+presentacion5: . asciz " ( (        _| |__             / /__/ /   \ \__/ /     ( (      ___/ /  \n"
+presentacion6: . asciz " /__\      /_____(            (______/     \____/      /__\    /____/   \n"
                                                                       
 																	  
