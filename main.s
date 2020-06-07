@@ -108,10 +108,109 @@ tablero:
 		bne columnaE
 @------impresion de tablero-----------
 printabl:
+	@-----------fila1-------------
 	ldr r4,=columna1
 	add r4,r4, #12
 	mov r5,#5 @a contador
+	cicloA:
+		ldr r1[r4] 
+		ldr r0,=formatd
+		bl printf
+		sub r4, r4, #4
+		subs r5,r5,#1
+		bne cicloA
+	ldr r0,=formatn
+	bl printf
+	@-----------fila2-------------
+	ldr r4,=columna2
+	add r4,r4, #12
+	mov r5,#5 @a contador
+	cicloB:
+		ldr r1[r4] 
+		ldr r0,=formatd
+		bl printf
+		sub r4, r4, #4
+		subs r5,r5,#1
+		bne cicloB
+	ldr r0,=formatn
+	bl printf
+	@-----------fila3-------------
+	ldr r4,=columna3
+	add r4,r4, #12
+	mov r5,#5 @a contador
+	cicloC:
+		ldr r1[r4] 
+		ldr r0,=formatd
+		bl printf
+		sub r4, r4, #4
+		subs r5,r5,#1
+		bne cicloC
+	ldr r0,=formatn
+	bl printf
+	@-----------fila4-------------
+	ldr r4,=columna4
+	add r4,r4, #12
+	mov r5,#5 @a contador
+	cicloD:
+		ldr r1[r4] 
+		ldr r0,=formatd
+		bl printf
+		sub r4, r4, #4
+		subs r5,r5,#1
+		bne cicloD
+	ldr r0,=formatn
+	bl printf
+	@-----------fila5-------------
+	ldr r4,=columna5
+	add r4,r4, #12
+	mov r5,#5 @a contador
+	cicloE:
+		ldr r1[r4] 
+		ldr r0,=formatd
+		bl printf
+		sub r4, r4, #4
+		subs r5,r5,#1
+		bne cicloE
+	ldr r0,=formatn
+	bl printf
 	
+	@------InicioJuego--------
+	ldr r0,=movimiento @pregunta al usuario el movimiento que quiere hacer
+	bl puts
+	
+	ldr r0,=op
+	ldr r1,=opcion
+	bl scanf
+	ldr r1,=opcion
+	ldr r1,[r1]
+	
+	cmp r1,#1
+	beq op1
+	cmp r1, #2
+	beq op2
+
+@-----opcion1-----------
+op1:
+	ldr r0,=fila
+	bl puts
+	
+	ldr r0,=op
+	ldr r1,=opcion
+	bl scanf
+	b printabl
+@-----opcion2-----------
+op2:
+	ldr r0,=columna
+	bl puts
+	
+	ldr r0,=op
+	ldr r1,=opcion
+	bl scanf
+	b printabl
+
+.unreq cont
+	mov r7,#1
+	swi 0
 	
 @--------------datos-----------------------------	
 .data
@@ -119,13 +218,18 @@ printabl:
 formato: asciz "%d\n"
 bienvenida:     .asciz "Bienvenido a Pi-DOTS\n"
 posicion: .asciz
-columna1: .word 1 A,B,C,D,E @fila 1
-columna2: .word 2 0,0,0,0,0 @fila 2
-columna3: .word 3 0,0,0,0,0 @fila 3
-columna4: .word 4 0,0,0,0,0 @fila 4
-columna5: .word 5 0,0,0,0,0 @fila 5
-opcion: .word 0
-cont: .word  
+columna1: .word 0 1,2,3,4,5 @fila 1
+columna2: .word 1 0,0,0,0,0 @fila 2
+columna3: .word 2 0,0,0,0,0 @fila 3
+columna4: .word 3 0,0,0,0,0 @fila 4
+columna5: .word 4 0,0,0,0,0 @fila 5
+movimiento: .asciz "¿Posicion en que quiere mover? \n1.Fila \n2.Columna"
+fila: .asciz "Fila en que se encuentrantra: "
+columna: .asciz "Columna en donde se encuentra: "
+opcion: .word 0 
+formatd: .asciz "%d"
+formatn: .asciz "\n"
+op: .asciz "%d"
 
 
 
