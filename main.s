@@ -11,16 +11,36 @@
  .func main
 @---------------Main---------------------------------
 main:
-	cont .req r5
-	mov r5, #5
-	ldr r0,=presentacion 	@mostrar titulo en asciiart
-	bl puts
+		cont .req r5
+		mov r5, #5
+		ldr r0,=presentacion 	@mostrar titulo en asciiart
+		bl printf
+		mov r0, #0
+
+	ldr r0, =presentacion1
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion2
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion3
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion4
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion5
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion6
+		bl printf
+		mov r0, #0	
+  
+		ldr r0,=bienvenida 		@Bienvenida al usuario
+		bl printf
 	
-	ldr r0,=bienvenida 		@Bienvenida al usuario
-	bl puts
-	
-	ldr r10,=columna1
-	add r10, r10, #12
+		ldr r10,=columna1
+		add r10, r10, #12
 
 @-------------Tablero-------------------------
 tablero:
@@ -107,7 +127,9 @@ columna5: .word 5 0,0,0,0,0 @fila 5
 opcion: .word 0
 cont: .word  
 
-salida:         .asciz "Gracias por jugar\n"
+
+
+salida:         .asciz " Gracias por jugar\n"
 presentacion : . asciz "  _____     _____              ______       ____      ______      ____  \n"
 presentacion1: . asciz " (  __ \   (_   _)            (_  __ \     / __ \   (___  ___)  / ____\ \n"
 presentacion2: . asciz "  ) )_) )    | |    ________    ) ) \ \   / /  \ \      ) )    ( (___   \n"
