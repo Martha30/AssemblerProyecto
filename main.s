@@ -30,7 +30,7 @@ main:
 tablero:
 	@--------A----------
 	columnaA:
-		bl aleatorios
+		bl myrand
 		cmp r0, #100
 		movgt r0, #1
 		movlt r0, #2
@@ -43,7 +43,7 @@ tablero:
 	mov r5, #5
 	@------B-----------
 	columnaB:
-		bl aleatorios
+		bl myrand
 		cmp r0, #100
 		movgt r0, #1
 		movlt r0, #2
@@ -56,7 +56,7 @@ tablero:
 	mov r5, #5
 	@-------C------------
 	columnaC:
-		bl aleatorios
+		bl myrand
 		cmp r0, #100
 		movgt r0, #1
 		movlt r0, #2
@@ -69,7 +69,7 @@ tablero:
 	mov r5, #5
 	@-------D-------------
 	columnaD:
-		bl aleatorios
+		bl myrand
 		cmp r0, #100
 		movgt r0, #1
 		movlt r0, #2
@@ -82,7 +82,7 @@ tablero:
 	mov r5, #5
 	@-------E--------------
 	columnaE:
-		bl aleatorios
+		bl myrand
 		cmp r0, #100
 		movgt r0, #1
 		movlt r0, #2
@@ -225,5 +225,3 @@ presentacion:
 ( (        _| |__             / /__/ /   \ \__/ /     ( (      ___/ /  
 /__\      /_____(            (______/     \____/      /__\    /____/   "
                                                                       
-																	  
-
