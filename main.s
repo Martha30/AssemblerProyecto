@@ -12,19 +12,35 @@
 @---------------Main---------------------------------
 main:
 		cont .req r5
-		mov r11, #5
+		mov r5, #5
 		ldr r0,=presentacion 	@mostrar titulo en asciiart
 		bl printf
-		mov r6, #0
+		mov r0, #0
+
+	ldr r0, =presentacion1
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion2
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion3
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion4
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion5
+		bl printf
+		mov r0, #0
+	ldr r0, =presentacion6
+		bl printf
+		mov r0, #0	
   
 		ldr r0,=bienvenida 		@Bienvenida al usuario
 		bl printf
-		
-		mov r11, #0
-		
+	
 		ldr r10,=columna1
 		add r10, r10, #12
-		mov r5, #5
 
 @-------------Tablero-------------------------
 tablero:
@@ -33,7 +49,7 @@ tablero:
 		bl myrand
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #2
+		movlt r0, #0
 		str r0,[r10]
 		sub r10,r10,#4
 		subs r5,r5,#1
@@ -46,7 +62,7 @@ tablero:
 		bl myrand
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #2
+		movlt r0, #0
 		str r0,[r10]
 		sub r10, r10, #4
 		subs r5,r5, #1
@@ -59,7 +75,7 @@ tablero:
 		bl myrand
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #2
+		movlt r0, #0
 		str r0,[r10]
 		sub r10, r10, #4
 		subs r5,r5, #1
@@ -72,7 +88,7 @@ tablero:
 		bl myrand
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #2
+		movlt r0, #0
 		str r0,[r10]
 		sub r10, r10, #4
 		subs r5,r5, #1
@@ -85,19 +101,22 @@ tablero:
 		bl myrand
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #2
+		movlt r0, #0
 		str r0, [r10]
 		sub r10,r10, #4
 		subs r5,r5, #1
 		bne columnaE
 @------impresion de tablero-----------
 printabl:
+	ldr r0,=puntaje
+	mv r1,r11
+	bl printf
 	@-----------fila1-------------
 	ldr r4,=columna1
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloA:
-		ldr r1,[r4] 
+		ldr r1[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -110,7 +129,7 @@ printabl:
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloB:
-		ldr r1,[r4] 
+		ldr r1[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -123,7 +142,7 @@ printabl:
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloC:
-		ldr r1,[r4] 
+		ldr r1[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -136,7 +155,7 @@ printabl:
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloD:
-		ldr r1,[r4] 
+		ldr r1[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -149,7 +168,7 @@ printabl:
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloE:
-		ldr r1,[r4] 
+		ldr r1[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -192,36 +211,51 @@ op2:
 	bl scanf
 	b printabl
 
-    .unreq cont
+@-----Error----------
+error:
+	ldr r0,=msjError
+	bl puts
+	bl getchar
+	b printabl
+
+@-------salida---------------
+exit:
+	ldr r0,=salida
+	bl puts 
+	.unreq cont
 	mov r7,#1
 	swi 0
 	
 @--------------datos-----------------------------	
 .data
 .align 2
-formato: .asciz "%d\n"
+formato: asciz "%d\n"
 bienvenida:     .asciz "Bienvenido a Pi-DOTS\n"
-@posicion: .asciz
-columna1: .word  1, 2, 3, 4, 5 @fila 1
-columna2: .word  0, 0, 0, 0, 0 @fila 2
-columna3: .word  0, 0, 0, 0, 0 @fila 3
-columna4: .word  0, 0, 0, 0, 0 @fila 4
-columna5: .word  0, 0, 0, 0, 0 @fila 5
+posicion: .asciz
+puntaje: .asciz "El puntaje es %d\n"
+columna1: .word 0,0,0,0,0 @fila 1
+columna2: .word 0,0,0,0,0 @fila 2
+columna3: .word 0,0,0,0,0 @fila 3
+columna4: .word 0,0,0,0,0 @fila 4
+columna5: .word 0,0,0,0,0 @fila 5
 movimiento: .asciz "¿Posicion en que quiere mover? \n1.Fila \n2.Columna"
-fila: .asciz "Fila en que se encuentrantra: "
+fila: .asciz "Fila en que se encuentra: "
 columna: .asciz "Columna en donde se encuentra: "
 opcion: .word 0 
 formatd: .asciz "%d"
 formatn: .asciz "\n"
 op: .asciz "%d"
-
+msjError: asciz "Dato no valido intente nuevamente"
+Tpuntos: .word 20
 salida:         .asciz " Gracias por jugar\n"
-presentacion: 
-	.asciz " _____     _____              ______       ____      ______      ____  
-(  __ \   (_   _)            (_  __ \     / __ \   (___  ___)  / ____\ 
-) )_) )    | |     ________    ) ) \ \   / /  \ \      ) )    ( (___   
-(  ___/     | |   (________)  ( (   ) ) ( ()  () )    ( (      \___ \  
-) )        | |                ) )  ) ) ( ()  () )     ) )         ) ) 
-( (        _| |__             / /__/ /   \ \__/ /     ( (      ___/ /  
-/__\      /_____(            (______/     \____/      /__\    /____/   "
+
+
+presentacion : . asciz "  _____     _____              ______       ____      ______      ____  \n"
+presentacion1: . asciz " (  __ \   (_   _)            (_  __ \     / __ \   (___  ___)  / ____\ \n"
+presentacion2: . asciz "  ) )_) )    | |    ________    ) ) \ \   / /  \ \      ) )    ( (___   \n"
+presentacion3: . asciz " (  ___/     | |   (________)  ( (   ) ) ( ()  () )    ( (      \___ \  \n"
+presentacion4: . asciz "  ) )        | |                ) )  ) ) ( ()  () )     ) )         ) ) \n"
+presentacion5: . asciz " ( (        _| |__             / /__/ /   \ \__/ /     ( (      ___/ /  \n"
+presentacion6: . asciz " /__\      /_____(            (______/     \____/      /__\    /____/   \n"
                                                                       
+																	  
