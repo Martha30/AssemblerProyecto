@@ -16,25 +16,6 @@ main:
 		ldr r0,=presentacion 	@mostrar titulo en asciiart
 		bl printf
 		mov r6, #0
-
-	ldr r0, =presentacion1
-		bl printf
-		mov r0, #0
-	ldr r0, =presentacion2
-		bl printf
-		mov r0, #0
-	ldr r0, =presentacion3
-		bl printf
-		mov r0, #0
-	ldr r0, =presentacion4
-		bl printf
-		mov r0, #0
-	ldr r0, =presentacion5
-		bl printf
-		mov r0, #0
-	ldr r0, =presentacion6
-		bl printf
-		mov r0, #0	
   
 		ldr r0,=bienvenida 		@Bienvenida al usuario
 		bl printf
@@ -211,7 +192,7 @@ op2:
 	bl scanf
 	b printabl
 
-.unreq cont
+    .unreq cont
 	mov r7,#1
 	swi 0
 	
@@ -235,14 +216,14 @@ formatn: .asciz "\n"
 op: .asciz "%d"
 
 salida:         .asciz " Gracias por jugar\n"
-presentacion : .asciz "  _____     _____              ______       ____      ______      ____  \n"
-presentacion1: .asciz " (  __ \   (_   _)            (_  __ \     / __ \   (___  ___)  / ____\ \n"
-presentacion2: .asciz "  ) )_) )    | |    ________    ) ) \ \   / /  \ \      ) )    ( (___   \n"
-presentacion3: .asciz " (  ___/     | |   (________)  ( (   ) ) ( ()  () )    ( (      \___ \  \n"
-presentacion4: .asciz "  ) )        | |                ) )  ) ) ( ()  () )     ) )         ) ) \n"
-presentacion5: .asciz " ( (        _| |__             / /__/ /   \ \__/ /     ( (      ___/ /  \n"
-presentacion6: .asciz " /__\      /_____(            (______/     \____/      /__\    /____/   \n"
+presentacion: 
+	.asciz " _____     _____              ______       ____      ______      ____  
+(  __ \   (_   _)            (_  __ \     / __ \   (___  ___)  / ____\ 
+) )_) )    | |     ________    ) ) \ \   / /  \ \      ) )    ( (___   
+(  ___/     | |   (________)  ( (   ) ) ( ()  () )    ( (      \___ \  
+) )        | |                ) )  ) ) ( ()  () )     ) )         ) ) 
+( (        _| |__             / /__/ /   \ \__/ /     ( (      ___/ /  
+/__\      /_____(            (______/     \____/      /__\    /____/   "
                                                                       
 																	  
-
 
