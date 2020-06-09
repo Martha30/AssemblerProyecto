@@ -12,10 +12,10 @@
 @---------------Main---------------------------------
 main:
 		cont .req r5
-		mov r5, #5
+		mov r11, #5
 		ldr r0,=presentacion 	@mostrar titulo en asciiart
 		bl printf
-		mov r0, #0
+		mov r6, #0
 
 	ldr r0, =presentacion1
 		bl printf
@@ -38,9 +38,12 @@ main:
   
 		ldr r0,=bienvenida 		@Bienvenida al usuario
 		bl printf
-	
+		
+		mov r11, #0
+		
 		ldr r10,=columna1
 		add r10, r10, #12
+		mov r5, #5
 
 @-------------Tablero-------------------------
 tablero:
@@ -49,7 +52,7 @@ tablero:
 		bl aleatorios
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #0
+		movlt r0, #2
 		str r0,[r10]
 		sub r10,r10,#4
 		subs r5,r5,#1
@@ -62,7 +65,7 @@ tablero:
 		bl aleatorios
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #0
+		movlt r0, #2
 		str r0,[r10]
 		sub r10, r10, #4
 		subs r5,r5, #1
@@ -75,7 +78,7 @@ tablero:
 		bl aleatorios
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #0
+		movlt r0, #2
 		str r0,[r10]
 		sub r10, r10, #4
 		subs r5,r5, #1
@@ -88,7 +91,7 @@ tablero:
 		bl aleatorios
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #0
+		movlt r0, #2
 		str r0,[r10]
 		sub r10, r10, #4
 		subs r5,r5, #1
@@ -101,7 +104,7 @@ tablero:
 		bl aleatorios
 		cmp r0, #100
 		movgt r0, #1
-		movlt r0, #0
+		movlt r0, #2
 		str r0, [r10]
 		sub r10,r10, #4
 		subs r5,r5, #1
@@ -113,7 +116,7 @@ printabl:
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloA:
-		ldr r1[r4] 
+		ldr r1,[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -126,7 +129,7 @@ printabl:
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloB:
-		ldr r1[r4] 
+		ldr r1,[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -139,7 +142,7 @@ printabl:
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloC:
-		ldr r1[r4] 
+		ldr r1,[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -152,7 +155,7 @@ printabl:
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloD:
-		ldr r1[r4] 
+		ldr r1,[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -165,7 +168,7 @@ printabl:
 	add r4,r4, #12
 	mov r5,#5 @a contador
 	cicloE:
-		ldr r1[r4] 
+		ldr r1,[r4] 
 		ldr r0,=formatd
 		bl printf
 		sub r4, r4, #4
@@ -215,7 +218,7 @@ op2:
 @--------------datos-----------------------------	
 .data
 .align 2
-formato: asciz "%d\n"
+formato: .asciz "%d\n"
 bienvenida:     .asciz "Bienvenido a Pi-DOTS\n"
 posicion: .asciz
 columna1: .word 0 1,2,3,4,5 @fila 1
@@ -242,5 +245,5 @@ presentacion4: . asciz "  ) )        | |                ) )  ) ) ( ()  () )     
 presentacion5: . asciz " ( (        _| |__             / /__/ /   \ \__/ /     ( (      ___/ /  \n"
 presentacion6: . asciz " /__\      /_____(            (______/     \____/      /__\    /____/   \n"
                                                                       
-	
-	
+																	  
+
