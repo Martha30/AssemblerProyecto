@@ -221,11 +221,11 @@ op2:
 formato: .asciz "%d\n"
 bienvenida:     .asciz "Bienvenido a Pi-DOTS\n"
 @posicion: .asciz
-columna1: .word  1,2,3,4,5 @fila 1
-columna2: .word  0,0,0,0,0 @fila 2
-columna3: .word  0,0,0,0,0 @fila 3
-columna4: .word  0,0,0,0,0 @fila 4
-columna5: .word  0,0,0,0,0 @fila 5
+columna1: .word  1, 2, 3, 4, 5 @fila 1
+columna2: .word  0, 0, 0, 0, 0 @fila 2
+columna3: .word  0, 0, 0, 0, 0 @fila 3
+columna4: .word  0, 0, 0, 0, 0 @fila 4
+columna5: .word  0, 0, 0, 0, 0 @fila 5
 movimiento: .asciz "¿Posicion en que quiere mover? \n1.Fila \n2.Columna"
 fila: .asciz "Fila en que se encuentrantra: "
 columna: .asciz "Columna en donde se encuentra: "
